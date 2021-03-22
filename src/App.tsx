@@ -53,22 +53,26 @@ const App: React.FC = () => {
 
   return (
     <div className="todoApp">
-      <h1 className="todoTitle">My task list</h1>
-      {!!todoList.length && (
-        <header className="todoHeader">
-          <Stats todoList={todoList} />
-          <DeleteCompletedTasks
-            onDeleteAllCompleted={handleDeleteCompletedTasks}
-            todoList={todoList}
-          />
-        </header>
-      )}
-      <TodoList
-        todoList={todoList}
-        onToggle={handleToggleTaskItem}
-        onDelete={handleDeleteTaskItem}
-      />
-      <AddTask onAdd={handleAdd} />
+      <header className="pageHeader">
+        <h1 className="todoTitle">My task list</h1>
+        {!!todoList.length && (
+          <div className="todoHeader">
+            <Stats todoList={todoList} />
+            <DeleteCompletedTasks
+              onDeleteAllCompleted={handleDeleteCompletedTasks}
+              todoList={todoList}
+            />
+          </div>
+        )}
+      </header>
+      <main className="todoBody">
+        <TodoList
+          todoList={todoList}
+          onToggle={handleToggleTaskItem}
+          onDelete={handleDeleteTaskItem}
+        />
+        <AddTask onAdd={handleAdd} />
+      </main>
     </div>
   );
 }
