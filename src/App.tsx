@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AddTask from './components/AddTask';
+import TodoList from './components/TodoList';
+import { ITodoItem } from './interfaces';
 
-function App() {
+const App: React.FC = () => {
+
+  const [todoList, setTodoList] = useState<ITodoItem[]>([]);
+
+  const handleAdd = (input: string) => {
+    const newTodoItem: ITodoItem = {
+      title: input,
+      id: Date.now(),
+      completed: false
+    };
+    setTodoList(prev => [newTodoItem, ...prev]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todoApp">
+      <h1 className="todoHeader">My task list</h1>
+      <TodoList todoList={todoList} />
+      <AddTask onAdd={handleAdd} />
     </div>
   );
 }
