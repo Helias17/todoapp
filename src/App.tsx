@@ -7,6 +7,15 @@ const App: React.FC = () => {
 
   const [todoList, setTodoList] = useState<ITodoItem[]>([]);
 
+  useEffect(() => {
+    const savedTaskList: ITodoItem[] = JSON.parse(localStorage.getItem('todoAppTaskList') || '[]');
+    setTodoList(savedTaskList);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todoAppTaskList', JSON.stringify(todoList));
+  }, [todoList])
+
   const handleAdd = (input: string) => {
     const newTodoItem: ITodoItem = {
       title: input,
