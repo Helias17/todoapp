@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AddTask from './components/AddTask';
 import TodoList from './components/TodoList';
+import DeleteCompletedTasks from './components/DeleteCompletedTasks';
 import { ITodoItem } from './interfaces';
+import Stats from './components/Stats';
 
 const App: React.FC = () => {
 
@@ -30,10 +32,8 @@ const App: React.FC = () => {
       if (todoItem.id === id) {
         if (todoItem.completed) {
           todoItem.completed = false;
-          console.log('set true');
         } else {
           todoItem.completed = true;
-          console.log('set false');
         }
       }
       return todoItem;
@@ -44,16 +44,30 @@ const App: React.FC = () => {
   const handleDeleteTaskItem = (id: number) => {
     const needToRemove = window.confirm('Are you sure to delete this task?');
     if (needToRemove) setTodoList(prev => prev.filter(todoItem => todoItem.id !== id));
+  }
 
+  const handleDeleteCompletedTasks = () => {
+    const needToRemove = window.confirm('Are you sure to delete all completed tasks?');
+    if (needToRemove) setTodoList(prev => prev.filter(todoItem => todoItem.completed !== true));
   }
 
   return (
     <div className="todoApp">
-      <h1 className="todoHeader">My task list</h1>
+      <h1 className="todoTitle">My task list</h1>
+      {!!todoList.length && (
+        <header className="todoHeader">
+          <Stats todoList={todoList} />
+          <DeleteCompletedTasks
+            onDeleteAllCompleted={handleDeleteCompletedTasks}
+            todoList={todoList}
+          />
+        </header>
+      )}
       <TodoList
         todoList={todoList}
         onToggle={handleToggleTaskItem}
-        onDelete={handleDeleteTaskItem} />
+        onDelete={handleDeleteTaskItem}
+      />
       <AddTask onAdd={handleAdd} />
     </div>
   );
