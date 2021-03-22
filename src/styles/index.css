@@ -21,6 +21,7 @@ body {
 
 .todoHeader {
   font-size: 36px;
+  line-height: 2;
   font-weight: 800;
   text-align: center;
 }
@@ -58,6 +59,10 @@ body {
 .todoItemLabel {
   flex-grow: 1;
 }
+  .todoItemLabel_fulfilled {
+    text-decoration: line-through;
+    font-weight: 200;
+  }
 
 .inputBox {
   display: flex;
