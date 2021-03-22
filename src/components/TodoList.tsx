@@ -17,6 +17,10 @@ const TodoList: React.FC<TodoListProps> = ({ todoList, onDelete, onToggle }) => 
 
   const itemClassName = 'todoItemLabel ';
 
+  todoList.sort((x, y) => {
+    return (y.completed === x.completed) ? 0 : y.completed ? -1 : 1;
+  })
+
   return (
     <ul className="todoList">
       {todoList.map(todoItem => (
