@@ -1,5 +1,7 @@
 import React from 'react';
 import { ITodoItem } from '../interfaces';
+import { priority } from './TaskPriority';
+console.log(priority);
 
 type TodoListProps = {
   todoList: ITodoItem[];
@@ -25,7 +27,9 @@ const TodoList: React.FC<TodoListProps> = ({ todoList, onDelete, onToggle }) => 
     <ul className="todoList">
       {todoList.map(todoItem => (
         <li className="todoListItem" key={todoItem.id}>
-          <label className={todoItem.completed ? itemClassName + 'todoItemLabel_fulfilled' : itemClassName}>
+          <label className={todoItem.completed ? `${itemClassName} todoItemLabel_size${todoItem.priority} todoItemLabel_fulfilled` : `${itemClassName} todoItemLabel_size${todoItem.priority}`}
+            title={`Importance: ${priority[todoItem.priority].name}`}
+          >
             <input type="checkbox" checked={todoItem.completed} className="todoItemCheckbox"
               onChange={onToggle.bind(null, todoItem.id)} />
             <span>{todoItem.title}</span>

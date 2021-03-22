@@ -18,13 +18,10 @@ body {
   padding-bottom: 15px;
 }
 
-.pageHeader {
-
-}
-
 .todoBody {
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 15px;
 }
 
@@ -74,9 +71,10 @@ body {
 }
 
 .todoListItem {
+  position: relative;
+  z-index: 2;
   display: flex;
   background-color: rgba(255, 255, 255, 0.5);
-  
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 5px;
   font-size: 16px;
@@ -96,17 +94,34 @@ body {
   cursor: pointer;
   width: 30px;
   height: 30px;
+
+}
+.todoItemDel:hover {
+  transform: scale(1.2);
 }
 
 .todoItemLabel {
+  display: flex;
+  align-items: center;
   flex-grow: 1;
 }
   .todoItemLabel_fulfilled {
     text-decoration: line-through;
     font-weight: 200;
   }
+  .todoItemLabel_size0 {
+    font-size: 14px;
+  }
+  .todoItemLabel_size1 {
+    font-size: 20px;
+  }
+  .todoItemLabel_size2 {
+    font-size: 24px;
+  }
 
 .inputBox {
+  position: relative;
+  z-index: 2;
   display: flex;
 }
 
@@ -166,4 +181,23 @@ body {
   padding: 15px;
   color: #990000;
   font-weight: 800;
+}
+
+.taskPriority {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.taskPriority__title {
+  margin-right: 15px;
+}
+
+.taskPriority__label {
+  font-weight: 200;
+  margin:0 15px 0 5px;
+}
+
+.taskPriority__input {
+  margin-bottom: 3px;
 }

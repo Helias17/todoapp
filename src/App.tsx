@@ -18,11 +18,12 @@ const App: React.FC = () => {
     localStorage.setItem('todoAppTaskList', JSON.stringify(todoList));
   }, [todoList])
 
-  const handleAdd = (input: string) => {
+  const handleAdd = (input: string, priority: number) => {
     const newTodoItem: ITodoItem = {
       title: input,
       id: Date.now(),
-      completed: false
+      completed: false,
+      priority
     };
     setTodoList(prev => [newTodoItem, ...prev]);
   }
@@ -54,7 +55,7 @@ const App: React.FC = () => {
   return (
     <div className="todoApp">
       <header className="pageHeader">
-        <h1 className="todoTitle">My task list</h1>
+        <h1 className="todoTitle animate__animated animate__bounceInDown">My task list</h1>
         {!!todoList.length && (
           <div className="todoHeader">
             <Stats todoList={todoList} />

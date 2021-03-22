@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react';
 import InputNotice from './InputNotice';
+import TaskPriority from './TaskPriority';
+
 
 interface inputProps {
-  onAdd(input: string): void;
+  onAdd(input: string, priority: number): void;
 }
+
+let priority: number = 1;
 
 const AddTask: React.FunctionComponent<inputProps> = props => {
 
@@ -18,9 +22,9 @@ const AddTask: React.FunctionComponent<inputProps> = props => {
     if (e.target.value.length) setInputNoticeVisible(false);
   }
 
-  const handleAddBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddBtn = () => {
     if (input.length) {
-      props.onAdd(input);
+      props.onAdd(input, priority);
       setInput('');
     } else {
       setInputNoticeVisible(true);
@@ -33,7 +37,7 @@ const AddTask: React.FunctionComponent<inputProps> = props => {
   const handleKeyUp = (e: React.KeyboardEvent) => {
     if (e.code === 'Enter') {
       if (input.length) {
-        props.onAdd(input);
+        props.onAdd(input, priority);
         setInput('');
       } else {
         setInputNoticeVisible(true);
@@ -42,6 +46,9 @@ const AddTask: React.FunctionComponent<inputProps> = props => {
     }
   }
 
+  const handlePriorityChange = (id: number) => {
+    priority = id;
+  }
 
   return (
     <>
@@ -60,6 +67,9 @@ const AddTask: React.FunctionComponent<inputProps> = props => {
         </div>
       </div>
       {inputNoticeVisible && <InputNotice />}
+      {!!input.length && <TaskPriority
+        onPriorityChange={handlePriorityChange}
+      />}
     </>
   );
 }

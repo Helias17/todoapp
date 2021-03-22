@@ -9,13 +9,12 @@ type DeleteCompletedTasksProps = {
 const DeleteCompletedTasks: React.FC<DeleteCompletedTasksProps> = ({ todoList, onDeleteAllCompleted }) => {
 
   const fulfilledTasks = todoList.filter(todoItem => todoItem.completed === true);
-  console.log(fulfilledTasks.length);
 
   if (fulfilledTasks.length < 2) return null;
 
   return (
     <div>
-      <button className="todoInputBtn" onClick={onDeleteAllCompleted}>
+      <button className="todoInputBtn animate__animated animate__bounceInRight animate__faster" onClick={onDeleteAllCompleted}>
         Delete completed tasks
       </button>
     </div>
