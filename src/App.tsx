@@ -4,6 +4,7 @@ import TodoList from './components/TodoList';
 import DeleteCompletedTasks from './components/DeleteCompletedTasks';
 import { ITodoItem } from './interfaces';
 import Stats from './components/Stats';
+import replaceSpecialChars from './replaceSpecialChars';
 
 const App: React.FC = () => {
 
@@ -19,8 +20,9 @@ const App: React.FC = () => {
   }, [todoList])
 
   const handleAdd = (input: string, priority: number) => {
+
     const newTodoItem: ITodoItem = {
-      title: input,
+      title: replaceSpecialChars(input),
       id: Date.now(),
       completed: false,
       priority
@@ -31,11 +33,7 @@ const App: React.FC = () => {
   const handleToggleTaskItem = (id: number) => {
     const updatedTodoList: ITodoItem[] = todoList.map(todoItem => {
       if (todoItem.id === id) {
-        if (todoItem.completed) {
-          todoItem.completed = false;
-        } else {
-          todoItem.completed = true;
-        }
+        todoItem.completed = !todoItem.completed;
       }
       return todoItem;
     });
@@ -49,7 +47,7 @@ const App: React.FC = () => {
 
   const handleDeleteCompletedTasks = () => {
     const needToRemove = window.confirm('Are you sure to delete all completed tasks?');
-    if (needToRemove) setTodoList(prev => prev.filter(todoItem => todoItem.completed !== true));
+    if (needToRemove) setTodoList(prev => prev.filter(todoItem => !todoItem.completed));
   }
 
   return (

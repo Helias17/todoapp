@@ -17,9 +17,7 @@ const TaskPriority: React.FC<TaskPriorityType> = ({ onPriorityChange }) => {
     const updatedRadioState: Priority[] = [...radioState];
 
     updatedRadioState.forEach((radioItem, index) => {
-      if (index === arrIndex) {
-        radioItem.selected = true;
-      } else radioItem.selected = false;
+      radioItem.selected = index === arrIndex ? true : false;
     })
 
     setRadioState(updatedRadioState);

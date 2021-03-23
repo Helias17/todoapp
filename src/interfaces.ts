@@ -13,3 +13,8 @@ export interface Priority {
 export interface TaskPriorityType {
   onPriorityChange(id: number): void;
 }
+
+export interface ISpecialChars {
+  char: string;
+  replacement: string;
+}

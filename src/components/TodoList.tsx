@@ -1,7 +1,6 @@
 import React from 'react';
 import { ITodoItem } from '../interfaces';
 import { priority } from './TaskPriority';
-console.log(priority);
 
 type TodoListProps = {
   todoList: ITodoItem[];

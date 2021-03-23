@@ -7,7 +7,7 @@ type StatsProps = {
 
 const Stats: React.FC<StatsProps> = ({ todoList }) => {
 
-  const fulfilledTasks = todoList.filter(todoItem => todoItem.completed === true)
+  const fulfilledTasks = todoList.filter(todoItem => todoItem.completed);
 
   return (
     <ul className="todoHeaderStats">
