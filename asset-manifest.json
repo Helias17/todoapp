@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.49b9db17.chunk.css",
+    "main.js": "/static/js/main.b421e50d.chunk.js",
+    "main.js.map": "/static/js/main.b421e50d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3d6f3a75.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3d6f3a75.js.map",
+    "static/js/2.1bdeca9e.chunk.js": "/static/js/2.1bdeca9e.chunk.js",
+    "static/js/2.1bdeca9e.chunk.js.map": "/static/js/2.1bdeca9e.chunk.js.map",
+    "static/js/3.92f1f0db.chunk.js": "/static/js/3.92f1f0db.chunk.js",
+    "static/js/3.92f1f0db.chunk.js.map": "/static/js/3.92f1f0db.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.49b9db17.chunk.css.map": "/static/css/main.49b9db17.chunk.css.map",
+    "static/js/2.1bdeca9e.chunk.js.LICENSE.txt": "/static/js/2.1bdeca9e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/icon-delete.f6703955.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3d6f3a75.js",
+    "static/js/2.1bdeca9e.chunk.js",
+    "static/css/main.49b9db17.chunk.css",
+    "static/js/main.b421e50d.chunk.js"
+  ]
+}
